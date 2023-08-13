@@ -17,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 //Common class
 public class BasePage {
+	public static BasePage getBasePageObject() {
+		return new BasePage();
+	}
 
 	// nhiệm vụ mở 1 URL bất kì ra
 	// common function
@@ -116,16 +119,16 @@ public class BasePage {
 
 	}
 
-	public By getByXpath(String xpathLocator) {
+	private By getByXpath(String xpathLocator) {
 		return By.xpath(xpathLocator);
 
 	}
 
-	public WebElement getWebElemet(WebDriver driver, String xpathLocator) {
+	private WebElement getWebElemet(WebDriver driver, String xpathLocator) {
 		return driver.findElement(getByXpath(xpathLocator));
 	}
 
-	public List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
+	private List<WebElement> getListWebElement(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByXpath(xpathLocator));
 	}
 
@@ -346,6 +349,6 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
 
-	private long longTimeout = 30;
+	private long longTimeout = 10;
 
 }
